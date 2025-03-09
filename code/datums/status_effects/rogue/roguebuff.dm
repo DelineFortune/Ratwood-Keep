@@ -423,14 +423,3 @@
 	name = "Darkling"
 	desc = "You are at home in the dark. Unbothered. In your lane. Moisturized."
 	icon_state = "stressg"
-
-/datum/status_effect/buff/sermon
-	id = "sermon"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/sermon
-	effectedstats = list("fortune" = 1)
-	duration = 20 MINUTES
-
-/atom/movable/screen/alert/status_effect/buff/sermon
-	name = "sermon"
-	desc = "You feel inspired by the sermon!"
-	icon_state = "buff"
