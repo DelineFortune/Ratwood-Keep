@@ -145,18 +145,9 @@
 	desc = ""
 	sight_flags = SEE_MOBS
 
-/obj/item/organ/eyes/night_vision/zombie
-	name = "undead eyes"
-	desc = ""
-
 /obj/item/organ/eyes/night_vision/werewolf
 	name = "moonlight eyes"
 	desc = ""
-
-/obj/item/organ/eyes/night_vision/nightmare
-	name = "burning red eyes"
-	desc = ""
-	icon_state = "burning_eyes"
 
 /obj/item/organ/eyes/night_vision/mushroom
 	name = "fung-eye"
@@ -461,3 +452,32 @@
 	tint = INFINITY
 	sight_flags = BLIND
 	metalizer_result = /obj/item/ammo_casing/caseless/lead
+
+/obj/item/organ/eyes/night_vision/zombie
+	name = "undead eyes"
+	desc = ""
+
+/obj/item/organ/eyes/night_vision/nightmare
+	name = "burning red eyes"
+	desc = ""
+	icon_state = "burning_eyes"
+
+/obj/item/organ/eyes/thermals
+	name = "Dendor hunter's eyes"
+	icon_state = "burning_eyes"
+	color = "#61DE2A"
+	desc = "Eyes granted to his finest hunters. You are now more beast than man now..."
+	eye_color = "FC0"
+	sight_flags = SEE_MOBS
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	flash_protect = FLASH_PROTECTION_SENSITIVE
+	see_in_dark = 8
+
+/obj/item/organ/eyes/xray
+	name = "Necra eyes"
+	color = "#1c19a5"
+	icon_state = "burning_eyes"
+	desc = "Eyes stolen by a god from one of Her servants... They will allow you to see everything… In this world or another."
+	eye_color = "000"
+	see_in_dark = 8
+	sight_flags = SEE_MOBS | SEE_OBJS | SEE_TURFS

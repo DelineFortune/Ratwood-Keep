@@ -137,6 +137,9 @@
 			else if(!am_foreign)
 				. += span_phobia("A Foreigner...")
 
+		if(name in GLOB.apostasy_players)
+			. += span_userdanger("Mark of apostasy!")
+		
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
 
