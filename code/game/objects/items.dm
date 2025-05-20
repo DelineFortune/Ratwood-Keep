@@ -181,11 +181,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/icon/experimental_onhip = FALSE
 	var/icon/experimental_onback = FALSE
 
-	var/do_sound_bell = FALSE
-	var/do_sound_chain = FALSE
-	var/do_sound_plate = FALSE
-	var/bell = FALSE
-
 	///trying to emote or talk with this in our mouth makes us muffled
 	var/muteinmouth = TRUE
 	///using spit emote spits the item out of our mouth and falls out after some time
@@ -541,7 +536,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		else
 			user.visible_message(span_warning("[user] burns [user.p_their()] hand putting out the fire on [src]!"))
 			extinguish()
-			var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+			var/obj/item/bodypart/affecting = C.get_bodypart((user.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 			if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 				C.update_damage_overlays()
 			return
@@ -551,7 +546,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(istype(C))
 			if(!C.gloves || (!(C.gloves.resistance_flags & (UNACIDABLE|ACID_PROOF))))
 				to_chat(user, span_warning("The acid on [src] burns my hand!"))
-				var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+				var/obj/item/bodypart/affecting = C.get_bodypart((user.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					C.update_damage_overlays()
 
@@ -677,7 +672,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 // for items that can be placed in multiple slots
 // The slot == refers to the new location of the item
 // Initial is used to indicate whether or not this is the initial equipment (job datums etc) or just a player doing it
-/obj/item/proc/equipped(mob/user, slot, initial = FALSE)
+/obj/item/proc/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
 	for(var/X in actions)
@@ -685,7 +680,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(item_action_slot_check(slot, user)) //some items only give their actions buttons when in a specific slot.
 			A.Grant(user)
 	item_flags |= IN_INVENTORY
-	if(!initial)
+	if(!initial && !silent) // Only non initial, non silent play (silent is false by default)
 		var/slotbit = slotdefine2slotbit(slot)
 		if(slot == ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)

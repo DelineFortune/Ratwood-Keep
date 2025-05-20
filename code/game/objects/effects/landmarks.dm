@@ -240,6 +240,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Acolyte"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/hospitaller
+	name = "Hospitaller"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/druid
 	name = "Druid"
 	icon_state = "arrow"
@@ -261,7 +265,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/nightmaiden
-	name = "Prostitute"
+	name = "Nightswain"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/merchant
