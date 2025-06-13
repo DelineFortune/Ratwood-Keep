@@ -437,6 +437,12 @@
 		return 0
 	return 1
 
+/obj/structure/flora/roguegrass/bushwinter
+icon_state = "bush1winter"
+
+/obj/structure/flora/roguegrass/bushwinter/update_icon()
+	icon_state = "bush[rand(1, 4)]"
+
 /obj/structure/flora/roguegrass/bush/wall
 	name = "great bush"
 	desc = "A bush, this one's roots are thick and block the way."
@@ -472,6 +478,12 @@
 	if(istype(O) && (O.pass_flags & PASSGRILLE))
 		return 1
 	return 0
+
+/obj/structure/flora/roguegrass/wall/bushwinter
+icon_state = "bushwall1winter"
+
+/obj/structure/flora/roguegrass/bushwinter/update_icon()
+	icon_state = "bush[rand(1, 2]"
 
 /obj/structure/flora/roguegrass/bush/wall/tall
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
